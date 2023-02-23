@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // 参数定长的柯里化
+    function curry(fn) {
+        // 获取原函数参数长度
+        const originLength = fn.length;
+        // 保存参数，即除去fn，保留后续传入的参数
+        const preArgs = [].slice.call(arguments, 1)
+        return function () {
+            const resArgs = [].slice.call(arguments);
+            // 用于保存所有参数
+            const allArgs = [...preArgs, ...resArgs]
+            if (allArgs.length >= originLength) {
+                // 参数足够则执行原函数
+                return fn.apply(this, allArgs)
+            } else {
+                // 参数不足则继续柯里化
+                return curry.call(null, fn, ...allArgs)
+            }
+        }
+    }
+
+    function add(a, b, c, d) {
+         console.log(a + b + c + d);;
+    }
+    let curriedFunc = curry(add);
+    curriedFunc(1,2,3,4);
+    curriedFunc(1,2)(3,4);
+    curriedFunc(1)(2)(3)(4)
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // O(1)
+    function O1(n) {
+      for (let i = 0; i < 3; i++) {
+        console.log(n);
+      }
+    }
+
+    // O(n)
+    function On(n) {
+      for (let i = 0; i < n; i++) {
+        console.log(n);
+      }
+    }
+    // O(n^2)
+    function On2(n) {
+      for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+          console.log(i * j);
+        }
+      }
+    }
+    // O(log(n))
+    function Ologn(n) {
+      for (let i = 1; i <= n; i *= 2) {
+        console.log(i);
+      }
+    }
+
+    // 递归时间复杂度--斐波那契 O(2^n)
+    function Fibonacci(n) {
+      if (n === 0 || n === 1) {
+        return 1;
+      }
+      return Fibonacci(n - 1) + Fibonacci(n - 2);
+    }
+  </script>
+</html>
